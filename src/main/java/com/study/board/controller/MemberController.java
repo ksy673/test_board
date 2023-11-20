@@ -2,8 +2,10 @@ package com.study.board.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.study.board.dto.MemberDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,14 +28,19 @@ public class MemberController {
     }
 
     @PostMapping("/loginCheck")
-    public String login(@ModelAttribute Member member, HttpSession session){
-       Member loginResult = memberService.login(member);
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
+        MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
             // login 성공
             session.setAttribute("loginEmail", loginResult.getMemberEmail());
+
+            // 로그인 성공 시 자바스크립트 리다이렉트
+            model.addAttribute("loginSuccessMessage", "로그인 성공!");
+
             return "redirect:/board/list";
         } else {
             // login 실패
+            model.addAttribute("loginError", "유효하지 않은 이메일 또는 비밀번호입니다.");
             return "login";
         }
     }
@@ -48,20 +55,21 @@ public class MemberController {
         System.out.println("memberEmail = " + memberEmail);
         String checkResult = memberService.emailCheck(memberEmail);
         return checkResult;
-//        if (checkResult != null) {
-//            return "ok";
-//        } else {
-//            return "no";
-//        }
+
     }
 
     @PostMapping("/member/save")
-    public String save(@ModelAttribute Member member) {
+    public String save(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("MemberController.save");
-        System.out.println("member = " + member);
+        System.out.println("memberDTO = " + memberDTO);
 
-        memberService.save(member);
+        memberService.save(memberDTO);
         return "login";
     }
 
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
 }

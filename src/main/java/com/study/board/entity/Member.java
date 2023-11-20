@@ -1,19 +1,44 @@
 package com.study.board.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.study.board.dto.MemberDTO;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
+import javax.persistence.*;
 
 @Entity
-@Data
+@Setter
+@Getter
+@Table(name = "member")
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Id // pk 지정
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
+    private Long id;
+
+    @Column(unique = true) // unique 제약조건 추가
     private String memberEmail;
+
+    @Column
     private String memberPassword;
+
+    @Column
     private String memberName;
+
+    public static Member toMemberEntity(MemberDTO memberDTO) {
+        Member memberEntity = new Member();
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        return memberEntity;
+    }
+
+    public static Member toUpdateMemberEntity(MemberDTO memberDTO) {
+        Member memberEntity = new Member();
+        memberEntity.setId(memberDTO.getId());
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        return memberEntity;
+    }
+
 }

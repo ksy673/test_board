@@ -5,13 +5,97 @@
     <title>게시글 리스트</title>
 </head>
 <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-      .layout {
-         width : 500px;
-         margin : 0 auto;
-         margin-top : 40px;
-    }
+        .layout {
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination a, .pagination strong {
+            margin: 0 5px;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        .pagination strong {
+            background-color: #4CAF50;
+            color: #fff;
+            border-color: #4CAF50;
+        }
+
+        .search-form {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form input {
+            padding: 8px;
+            margin-right: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-form button {
+            padding: 8px 12px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+        }
 </style>
 <body>
 
@@ -30,6 +114,7 @@
                     <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                 </td>
               </tr>
+              <a href="/member/logout">로그아웃</a>
           </tbody>
         </table>
 

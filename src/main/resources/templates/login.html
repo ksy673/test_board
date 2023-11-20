@@ -1,22 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-container input {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .login-container input[type="button"] {
+            background-color: #008CBA;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container input[type="button"]:hover {
+            background-color: #0077a3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
   </head>
   <body>
+  <div class="login-container">
     <form action="/loginCheck" method="post">
       이메일: <input type="text" name="memberEmail" /> <br />
       비밀번호: <input type="password" name="memberPassword" /> <br />
+<!--      <input type="submit" value="로그인" />-->
       <input type="submit" value="로그인" />
       <input type="button" onclick="onSignupClick()" value="회원가입" />
-    </form>
 
+      <!-- 로그인 에러 메시지 표시 -->
+      <p th:if="${loginError}" style="color: red" th:text="${loginError}"></p>
+    </form>
+  </div>
     <script>
       function onSignupClick() {
         alert("회원가입 페이지로 이동합니다.");
         location.href = "/signup";
       }
+
     </script>
+
   </body>
 </html>
