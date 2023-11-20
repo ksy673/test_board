@@ -79,6 +79,7 @@
       <input type="submit" value="로그인" />
       <input type="button" onclick="onSignupClick()" value="회원가입" />
 
+      <p th:if="${loginSuccessMessage}" style="color: blue" th:text="${loginSuccessMessage}"></p>
       <!-- 로그인 에러 메시지 표시 -->
       <p th:if="${loginError}" style="color: red" th:text="${loginError}"></p>
     </form>

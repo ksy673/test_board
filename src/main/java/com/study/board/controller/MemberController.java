@@ -34,9 +34,6 @@ public class MemberController {
             // login 성공
             session.setAttribute("loginEmail", loginResult.getMemberEmail());
 
-            // 로그인 성공 시 자바스크립트 리다이렉트
-            model.addAttribute("loginSuccessMessage", "로그인 성공!");
-
             return "redirect:/board/list";
         } else {
             // login 실패
