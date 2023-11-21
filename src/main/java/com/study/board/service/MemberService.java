@@ -37,7 +37,6 @@ public class MemberService {
             // 조회 결과가 없다(해당 이메일을 가진 회원이 없다)
             return null;
         }
-        
     }
 
     // 회원가입 이메일 기능 체크 처리
@@ -45,7 +44,7 @@ public class MemberService {
         Optional<Member> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);
         if (byMemberEmail.isPresent()) {
             // 조회결과가 있다 -> 사용할 수 없다.
-            return null;
+            return "duplicate";
         } else {
             // 조회결과가 없다 -> 사용할 수 있다.
             return "ok";
