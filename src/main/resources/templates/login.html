@@ -75,22 +75,22 @@
     <form action="/loginCheck" method="post">
       이메일: <input type="text" name="memberEmail" /> <br />
       비밀번호: <input type="password" name="memberPassword" /> <br />
-<!--      <input type="submit" value="로그인" />-->
+      <!--<input type="submit" value="로그인" />-->
       <input type="submit" value="로그인" />
       <input type="button" onclick="onSignupClick()" value="회원가입" />
-
-      <p th:if="${loginSuccessMessage}" style="color: blue" th:text="${loginSuccessMessage}"></p>
       <!-- 로그인 에러 메시지 표시 -->
       <p th:if="${loginError}" style="color: red" th:text="${loginError}"></p>
-    </form>
-  </div>
-    <script>
+      <p th:if="${loginErr}" style="color: red" th:text="${loginErr}"></p>
+
+      <script>
       function onSignupClick() {
         alert("회원가입 페이지로 이동합니다.");
         location.href = "/signup";
       }
 
     </script>
+    </form>
+  </div>
 
   </body>
 </html>

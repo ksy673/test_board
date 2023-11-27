@@ -114,7 +114,7 @@
                     <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                 </td>
               </tr>
-              <a href="/member/logout">로그아웃</a>
+
           </tbody>
         </table>
 
@@ -125,7 +125,11 @@
         <form th:action="@{/board/list}" method="get">
             <input type="text" name="searchKeyword">
             <button type="submit">검색</button>
+            <div style="position: absolute; right: 150px; bottom: 50px;">
+                <a href="/member/logout">로그아웃</a>
+            </div>
         </form>
+
     </div>
 
 </body>

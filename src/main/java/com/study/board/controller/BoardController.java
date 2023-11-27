@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class BoardController {
@@ -41,7 +43,7 @@ public class BoardController {
     @GetMapping("/board/list")
     public String boardList(Model model,
                             @PageableDefault(page = 0, size = 10,sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-                            String searchKeyword){
+                            String searchKeyword, HttpSession session){
 
         Page<Board> list = null;
 
@@ -59,6 +61,13 @@ public class BoardController {
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
+
+        if(session.getAttribute("loginEmail")  == null ){
+            // login 실패
+            model.addAttribute("loginErr", "로그인 해주세요.");
+            return "login";
+        }else{
+        }
 
         return "boardlist";
     }

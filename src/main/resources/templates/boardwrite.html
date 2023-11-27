@@ -7,22 +7,46 @@
 
 <style>
 
-    .layout {
-         width : 500px;
-         margin : 0 auto;
-         margin-top : 40px;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    .layout input {
-         width : 100%;
-         box-sizes : border-box
-    }
+        .layout {
+            width: 500px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .layout textarea {
-         width : 100%;
-         margin-top : 10px;
-         min-height : 300px;
-    }
+        .layout input,
+        .layout textarea,
+        .layout button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .layout textarea {
+            min-height: 150px;
+        }
+
+        .layout button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .layout button:hover {
+            background-color: #45a049;
+        }
 
 </style>
 
