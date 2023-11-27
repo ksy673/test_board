@@ -22,7 +22,7 @@ public class MemberController {
 
         return "login";
     }
-    
+
     @GetMapping("/login")
     public String openLogin(){
 
