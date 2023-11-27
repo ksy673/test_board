@@ -17,6 +17,12 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @GetMapping("/")
+    public String login(){
+
+        return "login";
+    }
+    
     @GetMapping("/login")
     public String openLogin(){
 
