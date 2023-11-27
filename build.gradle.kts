@@ -34,3 +34,10 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks {
+	val bootJar by getting(org.springframework.boot.gradle.tasks.bundling.BootJar::class) {
+		archiveFileName.set("board.jar")
+		archiveVersion.set("0.0.1")
+	}
+}
