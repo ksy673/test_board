@@ -125,7 +125,10 @@
         <form th:action="@{/board/list}" method="get">
             <input type="text" name="searchKeyword">
             <button type="submit">검색</button>
-            <div style="position: absolute; right: 150px; bottom: 50px;">
+            <divdiv style="position: absolute; top: 10px; right: 20px;">
+                <a href="/board/write">글작성</a>
+            </div>
+            <div style="position: absolute; bottom: 10px; right: 20px;">
                 <a href="/member/logout">로그아웃</a>
             </div>
         </form>
